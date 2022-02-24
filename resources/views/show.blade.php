@@ -12,8 +12,9 @@
     @include('components.navbar')
     <br>
     <div class="container">  
-        <h1>LANDING PAGE</h1>
-        <form method="POST">
+        <h1>TODO:</h1>
+        <form action="{{ route('todos-update', ['$id'=> $todo->id ]) }}" method="POST">
+            @method('PATCH')
             @csrf
             @error('name')
               <div class="alert alert-danger">
@@ -24,24 +25,12 @@
               <h5 class="alert alert-success">{{session('success')}}</h5>
             @endif
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Añadir tarea</label>
-              <input type="text" name="name" class="form-control">
+              <label for="exampleInputEmail1" class="form-label">Actualizar tarea</label>
+              <input type="text" name="name" class="form-control" value="{{ $todo->name }}">
             </div>
-            <button type="submit" class="btn btn-primary">Aceptar</button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
         <br>
-        <div class="row justify-content-start">
-          <div class="col-8">
-            @foreach ($todos as $todo)
-              <a href="{{ route('todos-show', [$todo->id]) }}" class="ms-1"> {{ $todo->name }}</p>
-              <form action="{{ route('todos-delete', [$todo->id]) }}" method="POST">
-                @method('DELETE')
-                @csrf
-                <button class="btn btn-danger">Eliminar</button>
-              </form> 
-            @endforeach
-          </div>
-        </div>
     </div>    
 </body>
 </html>

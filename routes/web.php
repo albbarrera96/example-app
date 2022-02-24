@@ -20,9 +20,10 @@ Route::get('/', [TodosController::class, 'index'])->name('todos');
 
 Route::post('/', [TodosController::class, 'store'])->name('todos');
 
-Route::get('/{id}', [TodosController::class, 'store'])->name('todos-show');
+Route::get('/show/{id}', [TodosController::class, 'show'])->name('todos-show');
 
-Route::patch('/', [TodosController::class, 'store'])->name('todos-edit');
+Route::patch('/', [TodosController::class, 'update'])->name('todos-update');
 
 Route::delete('/{id}', [TodosController::class, 'delete'])->name('todos-delete');
 
+ 
