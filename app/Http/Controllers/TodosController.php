@@ -25,4 +25,13 @@ class TodosController extends Controller
         $todos = Todo::all();
         return view('landing-page', ['todos' => $todos]);
     }
+
+    public function delete($id){
+
+        $todo = Todo::find($id);
+        $todo ->delete();
+
+        return redirect()->route('todos')->with('success', '¡Tarea eliminada!');
+    }
+
 }

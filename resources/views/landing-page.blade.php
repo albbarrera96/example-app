@@ -29,9 +29,19 @@
             </div>
             <button type="submit" class="btn btn-primary">Aceptar</button>
         </form>
-        @foreach ($todos as $todo)
-          <a href="{{ route('todos-editar', [$todo->id]) }}"> {{ $todo->name }}</p>
-        @endforeach
+        <br>
+        <div class="row justify-content-start">
+          <div class="col-8">
+            @foreach ($todos as $todo)
+              <a href="{{ route('todos-edit', [$todo->id]) }}" class="ms-1"> {{ $todo->name }}</p>
+              <form action="{{ route('todos-delete', [$todo->id]) }}" method="POST">
+                @method('DELETE')
+                @csrf
+                <button class="btn btn-danger">Eliminar</button>
+              </form> 
+            @endforeach
+          </div>
+        </div>
     </div>    
 </body>
 </html>
