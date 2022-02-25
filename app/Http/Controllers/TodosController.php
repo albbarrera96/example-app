@@ -32,14 +32,14 @@ class TodosController extends Controller
         return view('show', ['todo' => $todo]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id){
 
-        $todo = Todo::find();
+        $todo = Todo::find($id);
         $todo->id =$request->id;
         $todo->name = $request->name;
         $todo->save();
 
-        return view('landing-page', ['success' => 'tarea actualizada']);
+        return view('show', ['success' => 'tarea actualizada']);
     }
 
     public function delete($id){
