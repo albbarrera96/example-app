@@ -31,15 +31,23 @@
         </form>
         <br>
         <div class="row justify-content-start">
-          <div class="col-8">
-            @foreach ($todos as $todo)
-              <a href="{{ route('todos-show', [$todo->id]) }}" class="ms-1"> {{ $todo->name }}</p>
-              <form action="{{ route('todos-delete', [$todo->id]) }}" method="POST">
-                @method('DELETE')
-                @csrf
-                <button class="btn btn-danger">Eliminar</button>
-              </form> 
-            @endforeach
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-4">
+                @foreach ($todos as $todo)
+                  <div class="card shadow-sm py-2 text-center">
+                    <div class="card-title mb-4">
+                      <a href="{{ route('todos-show', [$todo->id]) }}" class="h3 text-dark"> {{ $todo->name }}</p>
+                    </div>
+                    <form action="{{ route('todos-delete', [$todo->id]) }}" method="POST">
+                      @method('DELETE')
+                      @csrf
+                      <button class="btn btn-danger">Eliminar</button>
+                    </form>                     
+                  </div>
+                 @endforeach                
+              </div>
+            </div>
           </div>
         </div>
     </div>    
